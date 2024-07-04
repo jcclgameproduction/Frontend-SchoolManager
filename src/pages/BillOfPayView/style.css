@@ -1,0 +1,18 @@
+.textSize{
+    font-size: 9px;
+    padding-left: 0%;
+}
+
+.borderRight{
+    border-right-style: dotted;
+    border-width: 1px;
+    border-color: gray;
+}
+
+.col-4.border-bottom {
+    padding: 0px;
+}
+
+.col-3.text-center.border-bottom.borderRight {
+    padding: 0px;
+}
