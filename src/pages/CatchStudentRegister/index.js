@@ -14,7 +14,6 @@ function CatchStudentRegister() {
     const { state } = useLocation();
 
     useEffect(()=>{
-      console.log(student)
         getCatchStudent();
     },[student]);
 

@@ -45,7 +45,6 @@ function FamiliarRegister() {
           }          
 
         } catch(error){
-          console.log("======")
           console.log(error)
           toast.error("Erro no cadastro do familiar. Tente novamente mais tarde.");
         }
