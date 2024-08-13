@@ -15,15 +15,17 @@ function AddressUpdate() {
     const { state } = useLocation();
 
     useEffect(()=>{
+        console.log("id: " + state.id)
         getAddress();
     }, []);
 
     function getAddress() {
         try{  
-            fetch(`${config.apiUrl}/getAddress/${state.id}`, {
+            fetch(`${config.apiUrl}/address/${state.id}`, {
                 method: 'GET',
                 })
-                .then((data) => {            
+                .then((response) => response.json())
+                .then((data) => {        
                     setStreet(data.address.street);
                     setCity(data.address.city);
                     setBlock(data.address.block); 

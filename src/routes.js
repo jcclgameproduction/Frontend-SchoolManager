@@ -35,7 +35,7 @@ function RoutesApp(){
                 <Route  path="/recordsList" element={<RecordsList/>} /> 
                 <Route  path="/billOfPyaView" element={<BillOfPyaView/>} /> 
                 <Route path="/recoverPassword" element={<RecoverPassword/>} />
-                <Route path="/passwordRegister" element={<PasswordRegister/>} />
+                <Route path="/passwordRegister/:token" element={<PasswordRegister/>} />
                 <Route path="/userRegister" element={<UserRegister/>} />
                 <Route path="/usersList" element={<UsersList/>} />
                 <Route path="/userUpdate" element={<UserUpdate/>} />
