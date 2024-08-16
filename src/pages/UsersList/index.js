@@ -114,7 +114,7 @@ function UsersList() {
                                 <div className="col-4 d-flex justify-content-around ">                                     
                                     
                                     <div><Link to="../userUpdate" state={{ id: user[index].id}}><img src={pencilEdit} /></Link></div>
-                                    <button className="btn p-0"><ConfirmationModal action={deleteUser} id={user[index].id}/></button>
+                                    <button className="btn p-0"><ConfirmationModal action={deleteUser} id={user[index].id} name={user[index].name}/></button>
                                 </div>
                             </div>
                         ))
