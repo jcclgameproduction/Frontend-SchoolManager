@@ -6,6 +6,7 @@ import trash from "../../assets/icons/trash.svg";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './style.css'
+import ConfirmationModal from "../../components/ConfirmationModal";
 
 function UsersList() {
     const [user, setUser] = useState([]);
@@ -113,7 +114,7 @@ function UsersList() {
                                 <div className="col-4 d-flex justify-content-around ">                                     
                                     
                                     <div><Link to="../userUpdate" state={{ id: user[index].id}}><img src={pencilEdit} /></Link></div>
-                                    <button className="btn p-0" onClick={()=>{deleteUser(user[index].id)}}><img src={trash} /></button>
+                                    <button className="btn p-0"><ConfirmationModal action={deleteUser} id={user[index].id}/></button>
                                 </div>
                             </div>
                         ))
