@@ -6,6 +6,7 @@ import trash from "../../assets/icons/trash.svg";
 import carne from "../../assets/icons/carne.svg";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ConfirmationModal from "../../components/ConfirmationModal";
 
 function RecordsList() {
     const [people, setPeople] = useState([]);
@@ -202,8 +203,8 @@ function RecordsList() {
                                   : <div><Link to="../familiarUpdate" state={{ id: people[index].id }}><img src={pencilEdit} /></Link></div>
                                 }
                                 {reference === "student" ?
-                                    <button className="btn p-0" onClick={()=>{deleteStudent(people[index].enrollment)}}><img src={trash} /></button>
-                                  : <button className="btn p-0" onClick={()=>{deleteFamiliar(people[index].id)}}><img src={trash} /></button>
+                                    <button className="btn p-0"><ConfirmationModal action={deleteStudent} id={people[index].enrollment}/></button>
+                                  : <button className="btn p-0"><ConfirmationModal action={deleteFamiliar} id={people[index].id}/></button>
                                 }
                             </div>
                         </div>
