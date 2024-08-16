@@ -203,8 +203,8 @@ function RecordsList() {
                                   : <div><Link to="../familiarUpdate" state={{ id: people[index].id }}><img src={pencilEdit} /></Link></div>
                                 }
                                 {reference === "student" ?
-                                    <button className="btn p-0"><ConfirmationModal action={deleteStudent} id={people[index].enrollment}/></button>
-                                  : <button className="btn p-0"><ConfirmationModal action={deleteFamiliar} id={people[index].id}/></button>
+                                    <button className="btn p-0"><ConfirmationModal action={deleteStudent} id={people[index].enrollment} name={people[index].name}/></button>
+                                  : <button className="btn p-0"><ConfirmationModal action={deleteFamiliar} id={people[index].id} name={people[index].name}/></button>
                                 }
                             </div>
                         </div>

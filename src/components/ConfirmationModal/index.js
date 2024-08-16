@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import trash from "../../assets/icons/trash.svg";
 
-function ConfirmationModal({ action, id }){
+function ConfirmationModal({ action, id, name }){
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const customStyles = {
         content: {
@@ -38,14 +38,18 @@ function ConfirmationModal({ action, id }){
                     onRequestClose={closeModal}
                     style={customStyles}
                 >
-                    <h4 className="pb-1">Tem certeza que deseja deletar isto?</h4>
+                    <div className="text-center mb-3 px-3">
+                        <h5 className="fs-5">Tem certeza que deseja deletar </h5>
+                        <h5 className="fs-4">{name}?</h5>
+                    </div>
+                    
                     <div className="row">
                         <div className="col-8">
                             <button className="btn btn-danger col-5" onClick={deletar}>Sim</button>
 
                         </div>
                         <div className="col-4">
-                            <button className="btn btn-dark col-10" onClick={closeModal}>Cancelar</button>
+                            <button className="btn btn-dark col-12" onClick={closeModal}>Cancelar</button>
 
                         </div>
                     </div>
