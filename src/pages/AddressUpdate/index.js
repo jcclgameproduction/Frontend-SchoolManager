@@ -15,7 +15,6 @@ function AddressUpdate() {
     const { state } = useLocation();
 
     useEffect(()=>{
-        console.log("id: " + state.id)
         getAddress();
     }, []);
 
@@ -66,13 +65,14 @@ function AddressUpdate() {
                 'authorization': `${token}`,
               },
             })
-              .then((response) => response.json())
-              .then(() => {            
+            .then((response) => response.json())
+            .then(() => {            
                 toast.success("Endereço atualizado com sucesso!")          
-              })
-              .catch((error) => {
-                toast.error("Não foi possível atualizar o endereço! Tente novamente mais tarde.");
-              });
+            })
+            .catch((error) => {
+              console.log(error);
+              toast.error("Não foi possível atualizar o endereço! Tente novamente mais tarde.");
+          }); 
           } else{
             toast.error("Preencha todos os campos!");
           }          

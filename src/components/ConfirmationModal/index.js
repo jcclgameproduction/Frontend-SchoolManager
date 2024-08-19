@@ -16,7 +16,8 @@ function ConfirmationModal({ action, id, name }){
             transform: 'translate(-50%, -50%)',
             background: "#F8F8FF",
         },
-        };
+    };
+    Modal.setAppElement('#root');
         
         function openModal() {
             setIsOpen(true);
@@ -32,7 +33,7 @@ function ConfirmationModal({ action, id, name }){
         }
         return (    
             <div>
-                <button onClick={openModal} className="btn p-0"><img src={trash} /></button>
+                <span onClick={openModal} className="btn p-0"><img src={trash} /></span>
                 <Modal
                     isOpen={modalIsOpen}
                     onRequestClose={closeModal}
