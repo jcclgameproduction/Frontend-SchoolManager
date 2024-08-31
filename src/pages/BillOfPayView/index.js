@@ -38,7 +38,6 @@ function BillOfPyaView(){
                 .then((response) => response.json())
                 .then((data) => {            
                     setStudent(data.student);
-                    console.log(data.student.createdAt)
                     const date = new Date(data.student.createdAt);
                     setDayOfEnrollment(date.getDate());
                     setMonthOfEnrollment(date.getMonth()+1);
@@ -73,7 +72,7 @@ function BillOfPyaView(){
     useEffect(()=>{
         getStudents();
         getResponsible();
-        getcurrentDate();
+        getcurrentDate();        
     }, []);
 
     return (

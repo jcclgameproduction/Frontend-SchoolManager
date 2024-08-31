@@ -3,7 +3,7 @@ import config from "../../config";
 import { Link, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Header from "../../components/Header";
 
 function StudentUpdate() {
     // variáveis que serão enviadas para o backend
@@ -135,126 +135,128 @@ function StudentUpdate() {
     }
 
     return (
-      <div className="p-5 py-7">
-        <h3 className="ps-5">Editar ficha de matrícula</h3>
-        <div className="container bg-white rounded ">
-          <div className="row pt-5">
-            <h4 className="text-center pb-3">Atualizar Aluno</h4>
-            <div className="card text-center border-0">
-              <div className="row">
-                <br/><br/><br/>
-                <div className="col-md-4 mb-3">
-                  <h5>Nome:</h5> 
-                  <input className="rounded  py-1  border-1" type="text" name="name" value={name} onChange={(e)=>{setName(e.target.value)}}/> 
+      <>
+        <Header/>
+        <div className="p-5 py-7">
+          <h3 className="ps-5">Editar ficha de matrícula</h3>
+          <div className="container bg-white rounded ">
+            <div className="row pt-5">
+              <h4 className="text-center pb-3">Atualizar Aluno</h4>
+              <div className="text-center border-0">
+                <div className="row">
+                  <br/><br/><br/>
+                  <div className="col-md-4 mb-3">
+                    <h5>Nome:</h5> 
+                    <input className="rounded  py-1  border-1" type="text" name="name" value={name} onChange={(e)=>{setName(e.target.value)}}/> 
+                  </div> 
+                  <div className="col-md-4 mb-3">
+                    <h5>Naturalidade:</h5> 
+                    <input className="rounded  py-1  border-1" type="text" name="naturalness" value={naturalness} onChange={(e)=>{setNaturalness(e.target.value)}}/> 
+                  </div> 
+                  <div className="col-md-4 mb-3">
+                    <h5>Cuidados especiais:</h5> 
+                    <input className="rounded  py-1  border-1" type="text" name="healthCare" value={healthCare} onChange={(e)=>{setHealthCare(e.target.value)}}/> 
+                  </div> 
                 </div> 
-                <div className="col-md-4 mb-3">
-                  <h5>Naturalidade:</h5> 
-                  <input className="rounded  py-1  border-1" type="text" name="naturalness" value={naturalness} onChange={(e)=>{setNaturalness(e.target.value)}}/> 
-                </div> 
-                <div className="col-md-4 mb-3">
-                  <h5>Cuidados especiais:</h5> 
-                  <input className="rounded  py-1  border-1" type="text" name="healthCare" value={healthCare} onChange={(e)=>{setHealthCare(e.target.value)}}/> 
-                </div> 
-              </div> 
-              <br/>
-              <div className="d-flex row">
-                <br/> 
-                <div className="col-md-4 mb-3">
-                  <h5>Data de Nascimento:</h5> 
-                  <input className="rounded  py-1  border-1" type="text" name="birthdate" value={birthDate} onChange={(e)=>{setBirthDate(e.target.value)}}/> 
-                </div>
-                <br/> 
-                <div className="col-md-4 mb-3 ">
-                  <h5>Mensalidade:</h5> 
-                  <input className="rounded  py-1  border-1" type="text" name="monthlyPayment" value={monthlyPayment} onChange={(e)=>{setMonthlyPayment(e.target.value)}}/> 
-                </div>
-                <div className="col-md-4 mb-3 ">
-                  <h5>Contato de Emergência:</h5> 
-                  <select defaultValue={emergencyContact} onChange={(e)=>{setEmergencyContact(e.target.value)}} className="rounded py-1 px-3 border-1">
-                    
-                    <option value={emergencyContact}>{nameOfEmergency} </option>
-                    {Object.keys(familiars).map((index) => (                        
-                      <option key={index} value={(familiars[index].id)}>
-                        {familiars[index].name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-              <br/>
-              <div className="d-flex row">
-                <div className="col-md-4 mb-3 ">
-                    <h5>Mãe:</h5> 
-                    <select defaultValue={mother} onChange={(e)=>{setMother(e.target.value)}} className="rounded py-1 px-3 border-1">
-                        <option value={mother}>{nameOfMother} </option>
-                        {Object.keys(familiars).map((index) => (                        
-                            <option key={index} value={(familiars[index].id)}>
-                            {familiars[index].name}
-                            </option>
-                        ))}
+                <br/>
+                <div className="d-flex row">
+                  <br/> 
+                  <div className="col-md-4 mb-3">
+                    <h5>Data de Nascimento:</h5> 
+                    <input className="rounded  py-1  border-1" type="text" name="birthdate" value={birthDate} onChange={(e)=>{setBirthDate(e.target.value)}}/> 
+                  </div>
+                  <br/> 
+                  <div className="col-md-4 mb-3 ">
+                    <h5>Mensalidade:</h5> 
+                    <input className="rounded  py-1  border-1" type="text" name="monthlyPayment" value={monthlyPayment} onChange={(e)=>{setMonthlyPayment(e.target.value)}}/> 
+                  </div>
+                  <div className="col-md-4 mb-3 ">
+                    <h5>Contato de Emergência:</h5> 
+                    <select defaultValue={emergencyContact} onChange={(e)=>{setEmergencyContact(e.target.value)}} className="rounded py-1 px-3 border-1">
+                      
+                      <option value={emergencyContact}>{nameOfEmergency} </option>
+                      {Object.keys(familiars).map((index) => (                        
+                        <option key={index} value={(familiars[index].id)}>
+                          {familiars[index].name}
+                        </option>
+                      ))}
                     </select>
+                  </div>
                 </div>
-                <div className="col-md-4 mb-3 ">
-                  <h5>Pai:</h5> 
-                  <select defaultValue={father} onChange={(e)=>{setFather(e.target.value)}} className="rounded py-1 px-3 border-1">
-                    <option value={father}>{nameOfFather} </option>
-                    {Object.keys(familiars).map((index) => (                        
-                      <option key={index} value={familiars[index].id}>
-                        {familiars[index].name}
-                      </option>
-                    ))}
-                  </select>
+                <br/>
+                <div className="d-flex row">
+                  <div className="col-md-4 mb-3 ">
+                      <h5>Mãe:</h5> 
+                      <select defaultValue={mother} onChange={(e)=>{setMother(e.target.value)}} className="rounded py-1 px-3 border-1">
+                          <option value={mother}>{nameOfMother} </option>
+                          {Object.keys(familiars).map((index) => (                        
+                              <option key={index} value={(familiars[index].id)}>
+                              {familiars[index].name}
+                              </option>
+                          ))}
+                      </select>
+                  </div>
+                  <div className="col-md-4 mb-3 ">
+                    <h5>Pai:</h5> 
+                    <select defaultValue={father} onChange={(e)=>{setFather(e.target.value)}} className="rounded py-1 px-3 border-1">
+                      <option value={father}>{nameOfFather} </option>
+                      {Object.keys(familiars).map((index) => (                        
+                        <option key={index} value={familiars[index].id}>
+                          {familiars[index].name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="col-md-4 mb-3 ">
+                    <h5>Responsável Financeiro:</h5> 
+                    <select defaultValue={responsible} onChange={(e)=>{setResponsible(e.target.value)}} className="rounded py-1 px-3 border-1">
+                      <option value={responsible}>{nameOfResponsible} </option>
+                      {Object.keys(familiars).map((index) => (                        
+                        <option key={index} value={(familiars[index].id)}>
+                          {familiars[index].name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
-                <div className="col-md-4 mb-3 ">
-                  <h5>Responsável Financeiro:</h5> 
-                  <select defaultValue={responsible} onChange={(e)=>{setResponsible(e.target.value)}} className="rounded py-1 px-3 border-1">
-                    <option value={responsible}>{nameOfResponsible} </option>
-                    {Object.keys(familiars).map((index) => (                        
-                      <option key={index} value={(familiars[index].id)}>
-                        {familiars[index].name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <br/>
+                              
+                <br/> <br/> <br/> <br/> <br/> 
+                <div className="d-flex row">
+                  <div className="col-md-4 mb-3">
+                    <Link to="../Menu" state={{ Menu: "view" }}><button className="default-button rounded bg-cinza-chumbo border-0 py-2 text-white" type="submit" >Menu</button></Link>
+                  </div> 
+                  <div className="col-md-4 mb-3">
+                    <button className="default-button rounded bg-verde-escola text-white border-0 py-2" type="submit" onClick={update}>Atualizar</button>
+                  </div> 
+                  {address === null ? 
+                    <div className="col-md-4 mb-3">
+                      <Link className="link-unstyled link-light" to="../addressRegister"><button className="default-button rounded bg-cinza-chumbo border-0 py-2 text-white" type="submit"> Registrar Endereço </button></Link>
+                    </div>
+                  : 
+                    <div className="col-md-4 mb-3">
+                      <Link className="link-unstyled link-light" to="../addressUpdate" state={{ id: address, student: state.id }} ><button className="default-button rounded bg-cinza-chumbo border-0 py-2 text-white" type="submit" > Editar Endereço </button></Link>
+                    </div>
+                }
+                  
+                </div>                            
               </div>
-              <br/>
-                            
-              <br/> <br/> <br/> <br/> <br/> 
-              <div className="d-flex row">
-                <div className="col-md-4 mb-3">
-                  <Link to="../Menu" state={{ Menu: "view" }}><button className="default-button rounded bg-cinza-chumbo border-0 py-2 text-white" type="submit" >Menu</button></Link>
-                </div> 
-                <div className="col-md-4 mb-3">
-                  <button className="default-button rounded bg-verde-escola text-white border-0 py-2" type="submit" onClick={update}>Atualizar</button>
-                </div> 
-                {address === null ? 
-                  <div className="col-md-4 mb-3">
-                    <Link className="link-unstyled link-light" to="../addressRegister"><button className="default-button rounded bg-cinza-chumbo border-0 py-2 text-white" type="submit"> Registrar Endereço </button></Link>
-                  </div>
-                : 
-                  <div className="col-md-4 mb-3">
-                    <Link className="link-unstyled link-light" to="../addressUpdate" state={{ id: address, student: state.id }} ><button className="default-button rounded bg-cinza-chumbo border-0 py-2 text-white" type="submit" > Editar Endereço </button></Link>
-                  </div>
-              }
-                
-              </div>                            
             </div>
           </div>
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </div>
-        <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-      </div>
-        
+      </>  
     );
 }
 

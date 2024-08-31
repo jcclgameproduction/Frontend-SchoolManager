@@ -30,10 +30,10 @@ function RoutesApp(){
                 <Route path="/familiarUpdate" element={<FamiliarUpdate/>} />
                 <Route path="/studentUpdate" element={<StudentUpdate/>} />
                 <Route path="/addressUpdate" element={<AddressUpdate/>} />
-                <Route  path="/menu" element={<Menu/>} /> 
-                <Route  path="/enrollmentRecordsManager" element={<EnrollmentRecordsManager/>} /> 
-                <Route  path="/recordsList" element={<RecordsList/>} /> 
-                <Route  path="/billOfPyaView" element={<BillOfPyaView/>} /> 
+                <Route path="/menu" element={<Menu/>} /> 
+                <Route path="/enrollmentRecordsManager" element={<EnrollmentRecordsManager/>} /> 
+                <Route path="/recordsList" element={<RecordsList/>} /> 
+                <Route path="/billOfPyaView" element={<BillOfPyaView />} /> 
                 <Route path="/recoverPassword" element={<RecoverPassword/>} />
                 <Route path="/passwordRegister/:token" element={<PasswordRegister/>} />
                 <Route path="/userRegister" element={<UserRegister/>} />

@@ -1,6 +1,7 @@
 import "./style.css";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Header from "../../components/Header";
 
 function Menu() {
     const { state } = useLocation();
@@ -19,6 +20,7 @@ function Menu() {
 
     return (
         <>
+            <Header/>
             <div className="p-5 py-7">
                 <h3 className="ps-5"> {action === "Registrar" ? <> Realizar Matrícula </> : <>Gerenciar fichas de matrícula</>}</h3>
                 <div className="container bg-white rounded ">
