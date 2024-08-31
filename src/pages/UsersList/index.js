@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import config from "../../config";
 import { Link } from "react-router-dom";
 import pencilEdit from "../../assets/icons/pencilEdit.svg";
-import trash from "../../assets/icons/trash.svg";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './style.css'
 import ConfirmationModal from "../../components/ConfirmationModal";
+import Header from "../../components/Header";
 
 function UsersList() {
     const [user, setUser] = useState([]);
@@ -85,6 +85,8 @@ function UsersList() {
 
 
     return (
+      <>
+        <Header/>      
         <div className="p-5">  
             <div className="container px-5 ">               
                 <Link className="link-unstyled link-light" to={'/userRegister'}>
@@ -134,6 +136,7 @@ function UsersList() {
             theme="light"
             />
         </div>
+      </>
     );
 }
 

@@ -3,6 +3,7 @@ import config from "../../config";
 import { Link, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Header from "../../components/Header";
 
 function AddressUpdate() {
     const [street, setStreet] = useState('');
@@ -83,73 +84,76 @@ function AddressUpdate() {
     }
 
     return (
-      <div className="p-5 py-7">
-        <h3 className="ps-5">Editar ficha de matrícula</h3>
-        <div className="container bg-white rounded ">
-          <div className="row p-5">
-            <h4 className="text-center pb-3">Atualizar Endereço</h4>
-            <div className="card text-center border-0">
-              <div className="row">
-                <br/><br/><br/>
-                <div className="col-md-4 mb-3">
-                  <h5>*Rua:</h5> 
-                  <input className="rounded  py-1  border-1" type="text" name="street" value={street} onChange={(e)=>{setStreet(e.target.value)}}/> 
+      <>
+        <Header/>
+        <div className="p-5 py-7">
+          <h3 className="ps-5">Editar ficha de matrícula</h3>
+          <div className="container bg-white rounded ">
+            <div className="row p-5">
+              <h4 className="text-center pb-3">Atualizar Endereço</h4>
+              <div className="text-center border-0">
+                <div className="row">
+                  <br/><br/><br/>
+                  <div className="col-md-4 mb-3">
+                    <h5>*Rua:</h5> 
+                    <input className="rounded  py-1  border-1" type="text" name="street" value={street} onChange={(e)=>{setStreet(e.target.value)}}/> 
+                  </div> 
+                  <div className="col-md-4 mb-3">
+                    <h5>*Número:</h5> 
+                    <input className="rounded  py-1  border-1" type="text" name="number" value={number} onChange={(e)=>{setNumber(e.target.value)}}/> 
+                  </div> 
+                  <div className="col-md-4 mb-3">
+                    <h5>*Setor:</h5> 
+                    <input className="rounded  py-1  border-1" type="text" name="sector" value={sector} onChange={(e)=>{setSector(e.target.value)}}/> 
+                  </div> 
                 </div> 
-                <div className="col-md-4 mb-3">
-                  <h5>*Número:</h5> 
-                  <input className="rounded  py-1  border-1" type="text" name="number" value={number} onChange={(e)=>{setNumber(e.target.value)}}/> 
-                </div> 
-                <div className="col-md-4 mb-3">
-                  <h5>*Setor:</h5> 
-                  <input className="rounded  py-1  border-1" type="text" name="sector" value={sector} onChange={(e)=>{setSector(e.target.value)}}/> 
-                </div> 
-              </div> 
-              <br/>
-              <div className="d-flex row">
-                <br/> 
-                <div className="col-md-4 mb-3">
-                  <h5>*Quadra:</h5> 
-                  <input className="rounded  py-1  border-1" type="text" name="block" value={block} onChange={(e)=>{setBlock(e.target.value)}}/> 
+                <br/>
+                <div className="d-flex row">
+                  <br/> 
+                  <div className="col-md-4 mb-3">
+                    <h5>*Quadra:</h5> 
+                    <input className="rounded  py-1  border-1" type="text" name="block" value={block} onChange={(e)=>{setBlock(e.target.value)}}/> 
+                  </div>
+                  <br/> 
+                  <div className="col-md-4 mb-3 ">
+                    <h5>*Lote:</h5> 
+                    <input className="rounded  py-1  border-1" type="text" name="Lot" value={lot} onChange={(e)=>{setLot(e.target.value)}}/> 
+                  </div>
+                  <div className="col-md-4 mb-3 ">
+                    <h5>*Cidade:</h5> 
+                    <input className="rounded  py-1  border-1" type="text" name="city" value={city} onChange={(e)=>{setCity(e.target.value)}}/> 
+                  </div>
                 </div>
-                <br/> 
-                <div className="col-md-4 mb-3 ">
-                  <h5>*Lote:</h5> 
-                  <input className="rounded  py-1  border-1" type="text" name="Lot" value={lot} onChange={(e)=>{setLot(e.target.value)}}/> 
-                </div>
-                <div className="col-md-4 mb-3 ">
-                  <h5>*Cidade:</h5> 
-                  <input className="rounded  py-1  border-1" type="text" name="city" value={city} onChange={(e)=>{setCity(e.target.value)}}/> 
-                </div>
+                <br/>
+                <br/>
+                
+                
+                <br/> <br/> <br/> <br/> <br/> 
+                <div className="d-flex row">
+                  <div className="col-md-4 mb-3">
+                    <Link to="../studentUpdate" state={{ id: state.student }}><button className="default-button rounded bg-cinza-chumbo border-0 py-2 text-white" type="submit" >Voltar</button></Link>
+                  </div> 
+                  <div className="col-md-4 mb-3">
+                    <button className="default-button rounded bg-verde-escola text-white border-0 py-2" type="submit" onClick={update}>Atualizar</button>
+                  </div> 
+                </div>                            
               </div>
-              <br/>
-              <br/>
-              
-              
-              <br/> <br/> <br/> <br/> <br/> 
-              <div className="d-flex row">
-                <div className="col-md-4 mb-3">
-                  <Link to="../studentUpdate" state={{ id: state.student }}><button className="default-button rounded bg-cinza-chumbo border-0 py-2 text-white" type="submit" >Voltar</button></Link>
-                </div> 
-                <div className="col-md-4 mb-3">
-                  <button className="default-button rounded bg-verde-escola text-white border-0 py-2" type="submit" onClick={update}>Atualizar</button>
-                </div> 
-              </div>                            
             </div>
           </div>
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </div>
-        <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-      </div>
+      </>
     );
 }
 
