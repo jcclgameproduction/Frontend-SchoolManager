@@ -16,6 +16,7 @@ import PasswordRegister from "./pages/PasswordRegister";
 import UserRegister from "./pages/UserRegister";
 import UsersList from "./pages/UsersList";
 import UserUpdate from "./pages/UserUpdate";
+import PrivateRoute from "./components/PrivateRoute";
 
 function RoutesApp(){
     return(
@@ -23,22 +24,22 @@ function RoutesApp(){
             <Routes>
                 {/* <Route path="/" element={<Home/>} /> */}
                 <Route path="/login" element={<Login/>} />
-                <Route path="/familiarRegister" element={<FamiliarRegister/>} />
-                <Route path="/addressRegister" element={<AddressRegister/>} />
-                <Route path="/studentRegister" element={<StudentRegister/>} />
-                <Route path="/catchStudentRegister" element={<CatchStudentRegister/>} />
-                <Route path="/familiarUpdate" element={<FamiliarUpdate/>} />
-                <Route path="/studentUpdate" element={<StudentUpdate/>} />
-                <Route path="/addressUpdate" element={<AddressUpdate/>} />
-                <Route path="/menu" element={<Menu/>} /> 
-                <Route path="/enrollmentRecordsManager" element={<EnrollmentRecordsManager/>} /> 
-                <Route path="/recordsList" element={<RecordsList/>} /> 
-                <Route path="/billOfPyaView" element={<BillOfPyaView />} /> 
+                <Route path="/familiarRegister" element={<PrivateRoute element={<FamiliarRegister/>} /> } />
+                <Route path="/addressRegister" element={<PrivateRoute element={<AddressRegister/>} /> } />
+                <Route path="/studentRegister" element={<PrivateRoute element={<StudentRegister/>} /> } />
+                <Route path="/catchStudentRegister" element={<PrivateRoute element={<CatchStudentRegister/>} /> } />
+                <Route path="/familiarUpdate" element={<PrivateRoute element={<FamiliarUpdate/>} /> } />
+                <Route path="/studentUpdate" element={<PrivateRoute element={<StudentUpdate/>} /> } />
+                <Route path="/addressUpdate" element={<PrivateRoute element={<AddressUpdate/>} /> } />
+                <Route path="/menu" element={<PrivateRoute element={<Menu/>} /> } /> 
+                <Route path="/enrollmentRecordsManager" element={<PrivateRoute element={<EnrollmentRecordsManager/>} /> } /> 
+                <Route path="/recordsList" element={<PrivateRoute element={<RecordsList/>} /> } /> 
+                <Route path="/billOfPyaView" element={<PrivateRoute element={<BillOfPyaView/>} /> } /> 
                 <Route path="/recoverPassword" element={<RecoverPassword/>} />
                 <Route path="/passwordRegister/:token" element={<PasswordRegister/>} />
-                <Route path="/userRegister" element={<UserRegister/>} />
-                <Route path="/usersList" element={<UsersList/>} />
-                <Route path="/userUpdate" element={<UserUpdate/>} />
+                <Route path="/userRegister" element={<PrivateRoute element={<UserRegister/>} /> } />
+                <Route path="/usersList" element={<PrivateRoute element={<UsersList/>} /> } />
+                <Route path="/userUpdate" element={<PrivateRoute element={<UserUpdate/>} /> } />
             </Routes>
         </BrowserRouter>
     )
