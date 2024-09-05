@@ -2,14 +2,8 @@ import React from 'react'
 import { Container, Content } from './style'
 import { 
   FaBars, 
-  FaHome, 
-  FaEnvelope, 
-  FaRegSun, 
   FaUserAlt, 
-  FaIdCardAlt, 
   FaRegFileAlt,
-  FaRegCalendarAlt,
-  FaChartBar
 } from 'react-icons/fa'
 
 import SidebarItem from '../SidebarItem'
