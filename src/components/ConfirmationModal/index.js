@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import trash from "../../assets/icons/trash.svg";
 
-function ConfirmationModal({ action, id, name }){
+function ConfirmationModal({ action, id, name, secondId }){
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const customStyles = {
         content: {
@@ -28,8 +28,13 @@ function ConfirmationModal({ action, id, name }){
         }
 
         function deletar(){
-            action(id);
-            closeModal(); 
+
+            if(secondId !== null){
+                action(id, secondId);
+            } else{
+                action(id);
+                closeModal(); 
+            }            
         }
         return (    
             <div>

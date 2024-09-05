@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import config from "../../config";
 import { Link , useLocation} from "react-router-dom";
-import trash from "../../assets/icons/trash.svg";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from "../../components/Header";
+import ConfirmationModal from "../../components/ConfirmationModal";
 
 function CatchStudentRegister() {
     const [student, setStudent]             = useState('');
@@ -173,7 +173,11 @@ function CatchStudentRegister() {
                       {Object.keys(responsibles).map((index) => (                        
                         <h5 key={index} className="row justify-content-evenly">
                           <span className="col-4"> {responsibles[index].name} </span> 
-                          <span className="col-4"><button className="btn p-0" onClick={()=>{deleteResponsible(student, responsibles[index].id)}}><img src={trash}/></button></span>
+                          <span className="col-4">
+                            <button className="btn p-0" >
+                              <ConfirmationModal action={deleteResponsible} id={student} name={responsibles[index].name} secondId={responsibles[index].id}/>
+                            </button>
+                          </span>
                         </h5>
                         
                       ))}
