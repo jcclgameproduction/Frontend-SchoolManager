@@ -22,7 +22,6 @@ function RoutesApp(){
     return(
         <BrowserRouter>
             <Routes>
-                {/* <Route path="/" element={<Home/>} /> */}
                 <Route path="/login" element={<Login/>} />
                 <Route path="/familiarRegister" element={<PrivateRoute element={<FamiliarRegister/>} /> } />
                 <Route path="/addressRegister" element={<PrivateRoute element={<AddressRegister/>} /> } />
@@ -40,6 +39,7 @@ function RoutesApp(){
                 <Route path="/userRegister" element={<PrivateRoute element={<UserRegister/>} /> } />
                 <Route path="/usersList" element={<PrivateRoute element={<UsersList/>} /> } />
                 <Route path="/userUpdate" element={<PrivateRoute element={<UserUpdate/>} /> } />
+                <Route path="/*" element={<Login/>} />
             </Routes>
         </BrowserRouter>
     )
