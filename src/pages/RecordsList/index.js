@@ -3,12 +3,12 @@ import config from "../../config";
 import { Link, useLocation } from "react-router-dom";
 import pencilEdit from "../../assets/icons/pencilEdit.svg";
 import carne from "../../assets/icons/carne.svg";
-
+import leftArrow from "../../assets/icons/left-arrow.svg";
+import Header from "../../components/Header";
+import DropdownCotract from "../../components/DropdownContract";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ConfirmationModal from "../../components/ConfirmationModal";
-import Header from "../../components/Header";
-import DropdownCotract from "../../components/DropdownContract";
 
 function RecordsList() {
     const [people, setPeople] = useState([]);
@@ -167,10 +167,12 @@ function RecordsList() {
     return (
       <>
         <Header/>
-        <div className="p-5 py-7">
-          <h3 className="ps-5">Gerenciar fichas de matrícula</h3>
-          <div className="container bg-white rounded p-1 ">
-              
+        <div className="p-5 py-4">
+          <div className="ps-5">
+            <Link to='../Menu' state={{ Menu: "view" }}><img src={leftArrow}/></Link>     
+            <h3>Gerenciar fichas de matrícula</h3>
+          </div>
+          <div className="container bg-white rounded p-1 ">              
               <div className="px-5 text-center">
                   <div className="row  m-2">
                       {reference === "familiar" ? 

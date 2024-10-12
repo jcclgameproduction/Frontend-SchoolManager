@@ -2,6 +2,7 @@ import "./style.css";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Header from "../../components/Header";
+import leftArrow from "../../assets/icons/left-arrow.svg";
 
 function Menu() {
     const { state } = useLocation();
@@ -21,8 +22,11 @@ function Menu() {
     return (
         <>
             <Header/>
-            <div className="p-5 py-7">
-                <h3 className="ps-5"> {action === "Registrar" ? <> Realizar Matrícula </> : <>Gerenciar fichas de matrícula</>}</h3>
+            <div className="p-5 py-4">
+                <div className="ps-5">
+                    <Link to={"../enrollmentRecordsManager"}><img src={leftArrow}/></Link>                    
+                    <h3 > {action === "Registrar" ? <> Realizar Matrícula </> : <>Gerenciar fichas de matrícula</>}</h3>
+                </div>
                 <div className="container bg-white rounded ">
                     <div className="text-center p-5">
                         <div className="pt-3  ">

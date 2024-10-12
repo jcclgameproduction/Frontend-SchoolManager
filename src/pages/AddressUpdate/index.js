@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from "../../components/Header";
+import leftArrow from "../../assets/icons/left-arrow.svg";
 
 function AddressUpdate() {
     const [street, setStreet] = useState('');
@@ -86,8 +87,11 @@ function AddressUpdate() {
     return (
       <>
         <Header/>
-        <div className="p-5 py-7">
-          <h3 className="ps-5">Editar ficha de matrícula</h3>
+        <div className="p-5 py-4">
+          <div className="ps-5">
+            <Link to="../studentUpdate" state={{ id: state.student }} ><img src={leftArrow}/></Link> 
+            <h3 >Editar ficha de matrícula</h3>
+          </div>
           <div className="container bg-white rounded ">
             <div className="row p-5">
               <h4 className="text-center pb-3">Atualizar Endereço</h4>
@@ -131,7 +135,6 @@ function AddressUpdate() {
                 <br/> <br/> <br/> <br/> <br/> 
                 <div className="d-flex row">
                   <div className="col-md-4 mb-3">
-                    <Link to="../studentUpdate" state={{ id: state.student }}><button className="default-button rounded bg-cinza-chumbo border-0 py-2 text-white" type="submit" >Voltar</button></Link>
                   </div> 
                   <div className="col-md-4 mb-3">
                     <button className="default-button rounded bg-verde-escola text-white border-0 py-2" type="submit" onClick={update}>Atualizar</button>

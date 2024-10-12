@@ -3,6 +3,8 @@ import config from "../../config";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from "../../components/Header";
+import leftArrow from "../../assets/icons/left-arrow.svg";
+import { Link } from "react-router-dom";
 
 function UserRegister() {
     const [name, setName] = useState('');
@@ -82,8 +84,9 @@ function UserRegister() {
     return (
       <>
         <Header/>  
-        <div className="p-5 py-7">  
+        <div className="p-5 py-4">  
           <div className="container px-5 ">
+            <Link to='../usersList' ><img src={leftArrow}/></Link> 
             <h3 >Funcionários</h3>
             <div className="row pt-5 px-5 bg-white rounded text-center">
               <h4 className="text-verde-escola h3 pb-4 text-center">Cadastrar Funcionário</h4>

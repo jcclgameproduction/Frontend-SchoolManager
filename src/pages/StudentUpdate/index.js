@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from "../../components/Header";
+import leftArrow from "../../assets/icons/left-arrow.svg";
 
 function StudentUpdate() {
     // variáveis que serão enviadas para o backend
@@ -137,8 +138,11 @@ function StudentUpdate() {
     return (
       <>
         <Header/>
-        <div className="p-5 py-7">
-          <h3 className="ps-5">Editar ficha de matrícula</h3>
+        <div className="p-5 py-4">
+          <div className="ps-5">
+            <Link to='../recordsList' state={{ List: "student" }}><img src={leftArrow}/></Link> 
+            <h3 >Editar ficha de matrícula</h3>  
+          </div>
           <div className="container bg-white rounded ">
             <div className="row pt-5">
               <h4 className="text-center pb-3">Atualizar Aluno</h4>
