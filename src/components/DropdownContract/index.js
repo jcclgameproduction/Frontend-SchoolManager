@@ -8,14 +8,12 @@ import config from '../../config';
 function DropdownCotract({enrollment, idResponsible}) {
   return (
     <div className="dropdown">
-      <button
-        className="btn "
-        type="button"
+      <a
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
         <img src={doc} />
-      </button>
+      </a>
       <ul className="dropdown-menu">
         <li>
           <Link to="../integralContract" className="dropdown-item" state={{ id: enrollment ,  responsible: idResponsible }} >Contrato Integral</Link>
