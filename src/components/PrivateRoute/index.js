@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { verifyAuth } from "../../utils/auth/authVerification";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const PrivateRoute = ({ element }) => {
   const [authToken, setAuthToken] = useState(true)
