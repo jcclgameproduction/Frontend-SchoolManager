@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useLocation } from "react-router-dom";
 import Header from "../../components/Header";
+import leftArrow from "../../assets/icons/left-arrow.svg";
 
 function UserUpdate() {
     const [userId, setUserId] = useState('');
@@ -126,8 +127,9 @@ function UserUpdate() {
     return (
       <>
         <Header/>      
-        <div className="p-5 py-7">  
+        <div className="p-5 py-4">  
           <div className="container px-5 ">
+            <Link to='../usersList' ><img src={leftArrow}/></Link> 
             <h3 >Funcionários</h3>
             <div className="row pt-5 px-5 bg-white rounded text-center">
               <h4 className="text-verde-escola h3 pb-4 text-center">Atualizar Funcionário</h4>
