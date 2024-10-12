@@ -17,6 +17,7 @@ import UserRegister from "./pages/UserRegister";
 import UsersList from "./pages/UsersList";
 import UserUpdate from "./pages/UserUpdate";
 import PrivateRoute from "./components/PrivateRoute";
+import IntegralContract from "./pages/IntegralContract";
 
 function RoutesApp(){
     return(
@@ -40,6 +41,7 @@ function RoutesApp(){
                 <Route path="/usersList" element={<PrivateRoute element={<UsersList/>} /> } />
                 <Route path="/userUpdate" element={<PrivateRoute element={<UserUpdate/>} /> } />
                 <Route path="/*" element={<Login/>} />
+                <Route path="/integralContract" element={<IntegralContract/>} />
             </Routes>
         </BrowserRouter>
     )

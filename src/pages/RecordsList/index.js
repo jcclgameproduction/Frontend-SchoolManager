@@ -3,10 +3,12 @@ import config from "../../config";
 import { Link, useLocation } from "react-router-dom";
 import pencilEdit from "../../assets/icons/pencilEdit.svg";
 import carne from "../../assets/icons/carne.svg";
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ConfirmationModal from "../../components/ConfirmationModal";
 import Header from "../../components/Header";
+import DropdownCotract from "../../components/DropdownContract";
 
 function RecordsList() {
     const [people, setPeople] = useState([]);
@@ -183,6 +185,7 @@ function RecordsList() {
                       
                       <div className="col-4 bg-cinza-light"> Nome</div>
                       <div className="col-4 bg-cinza-light d-flex justify-content-around">
+                        {reference === "student" && <div>Contrato</div>}         
                           {reference === "student" && <div>Carnê</div>}                        
                           <div>Atualizar</div>
                           <div> Deletar</div>
@@ -197,9 +200,12 @@ function RecordsList() {
                               }                            
                               <div className="col-4">{people[index].name}</div>
                               <div className="col-4 d-flex justify-content-around ">
+                                {reference === "student" && 
+                                  <DropdownCotract enrollment={ people[index].enrollment} idResponsible={people[index].idResponsible}/>
+                                } 
                                   {reference === "student" && 
                                     <div><Link to="../billOfPyaView" state={{ id: people[index].enrollment ,  responsible: people[index].idResponsible }} ><img src={carne} /></Link></div>
-                                  }        
+                                  }                                          
                                   {reference === "student" ?
                                       <div><Link to="../studentUpdate" state={{ id: people[index].enrollment }}><img src={pencilEdit} /></Link></div>
                                     : <div><Link to="../familiarUpdate" state={{ id: people[index].id }}><img src={pencilEdit} /></Link></div>
