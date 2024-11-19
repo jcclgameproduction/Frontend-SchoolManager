@@ -67,14 +67,22 @@ function AddressUpdate() {
                 'authorization': `${token}`,
               },
             })
-            .then((response) => response.json())
-            .then(() => {            
-                toast.success("Endereço atualizado com sucesso!")          
+            .then((response) =>{
+              if(response.ok){
+                toast.success("Endereço atualizado com sucesso!")   
+              }  else {
+                const errorPromise = response.json().then((data) => {
+                  throw new Error(data.error);
+                });
+                errorPromise.catch((error) => {
+                  toast.error(error.message);
+                  console.error(error.message); 
+                });           
+              }
             })
-            .catch((error) => {
+            .catch((error) => {                
               console.log(error);
-              toast.error("Não foi possível atualizar o endereço! Tente novamente mais tarde.");
-          }); 
+            })
           } else{
             toast.error("Preencha todos os campos!");
           }          
@@ -88,58 +96,58 @@ function AddressUpdate() {
       <>
         <Header/>
         <div className="p-5 py-4">
-          <div className="ps-5">
+          <div className="container rounded p-1">
             <Link to="../studentUpdate" state={{ id: state.student }} ><img src={leftArrow}/></Link> 
             <h3 >Editar ficha de matrícula</h3>
-          </div>
-          <div className="container bg-white rounded ">
-            <div className="row p-5">
-              <h4 className="text-center pb-3">Atualizar Endereço</h4>
-              <div className="text-center border-0">
-                <div className="row">
-                  <br/><br/><br/>
-                  <div className="col-md-4 mb-3">
-                    <h5>*Rua:</h5> 
-                    <input className="rounded  py-1  border-1" type="text" name="street" value={street} onChange={(e)=>{setStreet(e.target.value)}}/> 
+            <div className=" bg-white  ">
+              <div className="row p-5">
+                <h4 className="text-center pb-3">Atualizar Endereço</h4>
+                <div className="text-center border-0">
+                  <div className="row">
+                    <br/><br/><br/>
+                    <div className="col-md-4 mb-3">
+                      <h5>*Rua:</h5> 
+                      <input className="rounded  py-1  border-1" type="text" name="street" value={street} onChange={(e)=>{setStreet(e.target.value)}}/> 
+                    </div> 
+                    <div className="col-md-4 mb-3">
+                      <h5>*Número:</h5> 
+                      <input className="rounded  py-1  border-1" type="text" name="number" value={number} onChange={(e)=>{setNumber(e.target.value)}}/> 
+                    </div> 
+                    <div className="col-md-4 mb-3">
+                      <h5>*Setor:</h5> 
+                      <input className="rounded  py-1  border-1" type="text" name="sector" value={sector} onChange={(e)=>{setSector(e.target.value)}}/> 
+                    </div> 
                   </div> 
-                  <div className="col-md-4 mb-3">
-                    <h5>*Número:</h5> 
-                    <input className="rounded  py-1  border-1" type="text" name="number" value={number} onChange={(e)=>{setNumber(e.target.value)}}/> 
-                  </div> 
-                  <div className="col-md-4 mb-3">
-                    <h5>*Setor:</h5> 
-                    <input className="rounded  py-1  border-1" type="text" name="sector" value={sector} onChange={(e)=>{setSector(e.target.value)}}/> 
-                  </div> 
-                </div> 
-                <br/>
-                <div className="d-flex row">
-                  <br/> 
-                  <div className="col-md-4 mb-3">
-                    <h5>*Quadra:</h5> 
-                    <input className="rounded  py-1  border-1" type="text" name="block" value={block} onChange={(e)=>{setBlock(e.target.value)}}/> 
+                  <br/>
+                  <div className="d-flex row">
+                    <br/> 
+                    <div className="col-md-4 mb-3">
+                      <h5>*Quadra:</h5> 
+                      <input className="rounded  py-1  border-1" type="text" name="block" value={block} onChange={(e)=>{setBlock(e.target.value)}}/> 
+                    </div>
+                    <br/> 
+                    <div className="col-md-4 mb-3 ">
+                      <h5>*Lote:</h5> 
+                      <input className="rounded  py-1  border-1" type="text" name="Lot" value={lot} onChange={(e)=>{setLot(e.target.value)}}/> 
+                    </div>
+                    <div className="col-md-4 mb-3 ">
+                      <h5>*Cidade:</h5> 
+                      <input className="rounded  py-1  border-1" type="text" name="city" value={city} onChange={(e)=>{setCity(e.target.value)}}/> 
+                    </div>
                   </div>
-                  <br/> 
-                  <div className="col-md-4 mb-3 ">
-                    <h5>*Lote:</h5> 
-                    <input className="rounded  py-1  border-1" type="text" name="Lot" value={lot} onChange={(e)=>{setLot(e.target.value)}}/> 
-                  </div>
-                  <div className="col-md-4 mb-3 ">
-                    <h5>*Cidade:</h5> 
-                    <input className="rounded  py-1  border-1" type="text" name="city" value={city} onChange={(e)=>{setCity(e.target.value)}}/> 
-                  </div>
+                  <br/>
+                  <br/>
+                  
+                  
+                  <br/> <br/> <br/> <br/> <br/> 
+                  <div className="d-flex row">
+                    <div className="col-md-4 mb-3">
+                    </div> 
+                    <div className="col-md-4 mb-3">
+                      <button className="default-button rounded bg-verde-escola text-white border-0 py-2" type="submit" onClick={update}>Atualizar</button>
+                    </div> 
+                  </div>                            
                 </div>
-                <br/>
-                <br/>
-                
-                
-                <br/> <br/> <br/> <br/> <br/> 
-                <div className="d-flex row">
-                  <div className="col-md-4 mb-3">
-                  </div> 
-                  <div className="col-md-4 mb-3">
-                    <button className="default-button rounded bg-verde-escola text-white border-0 py-2" type="submit" onClick={update}>Atualizar</button>
-                  </div> 
-                </div>                            
               </div>
             </div>
           </div>

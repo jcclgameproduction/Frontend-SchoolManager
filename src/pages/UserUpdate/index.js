@@ -101,17 +101,20 @@ function UserUpdate() {
                 'authorization': `${token}`,
               },
               }).then(response => {
-                if (!response.ok) {
-                    return response.text().then(text => { throw new Error(text) });
-                }
-                  return response.json();
-              })
-              .then(data => {         
+                if(response.ok){
                   toast.success("Funcionário atualizado com sucesso.");
+                }  else {
+                  const errorPromise = response.json().then((data) => {
+                    throw new Error(data.error);
+                  });
+                  errorPromise.catch((error) => {
+                    toast.error(error.message);
+                    console.error(error.message); 
+                  });           
+                }
               })
               .catch((error) => {
                 console.log(error)
-               toast.error("Erro ao atualizar funcionário. Tente novamente mais tarde.");
               });
 
           } else{

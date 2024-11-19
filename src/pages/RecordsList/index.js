@@ -119,16 +119,25 @@ function RecordsList() {
           headers: {
             'authorization': `${token}`,
           },
-        }).then(() => {            
-            toast.success("Familiar deletado com sucesso!");    
-            getFamiliars();     
+        }).then((response) =>{
+            if(response.ok){
+              toast.success("Familiar deletado com sucesso!");    
+              getFamiliars();  
+            }  else {
+              const errorPromise = response.json().then((data) => {
+                throw new Error(data.error);
+              });
+              errorPromise.catch((error) => {
+                toast.error(error.message);
+                console.error(error.message); 
+              });           
+            }
           })
           .catch((error) => {                
-            console.log(error)
-            toast.error("Erro ao deletar o familiar. Tente novamente mais tarde.");
-          });
+            console.log(error);
+          })
         }
-       catch(error){
+      catch(error){
         console.log(error)
         toast.error("Erro ao deletar o familiar. Tente novamente mais tarde.");
       }
@@ -148,19 +157,28 @@ function RecordsList() {
           headers: {
             'authorization': `${token}`,
           },
-        }).then(() => {            
+        }).then((response) =>{
+          if(response.ok){
             toast.success("Aluno deletado com sucesso!");    
-            getStudents();     
-          })
-          .catch((error) => {                
-            console.log(error)
-            toast.error("Erro ao deletar aluno. Tente novamente mais tarde.");
-          });
-        }
-       catch(error){
-        console.log(error)
-        toast.error("Erro ao deletar aluno. Tente novamente mais tarde.");
+            getStudents();   
+          }  else {
+            const errorPromise = response.json().then((data) => {
+              throw new Error(data.error);
+            });
+            errorPromise.catch((error) => {
+              toast.error(error.message);
+              console.error(error.message); 
+            });           
+          }
+        })
+        .catch((error) => {                
+          console.log(error);
+        })
       }
+    catch(error){
+      console.log(error)
+      toast.error("Erro ao deletar aluno. Tente novamente mais tarde.");
+    }
   
     }
 
@@ -168,12 +186,10 @@ function RecordsList() {
       <>
         <Header/>
         <div className="p-5 py-4">
-          <div className="ps-5">
-            <Link to='../Menu' state={{ Menu: "view" }}><img src={leftArrow}/></Link>     
-            <h3>Gerenciar fichas de matrícula</h3>
-          </div>
-          <div className="container bg-white rounded p-1 ">              
-              <div className="px-5 text-center">
+          <div className="container rounded p-1 ">     
+              <Link to='../Menu' state={{ Menu: "view" }}><img src={leftArrow}/></Link>     
+              <h3>Gerenciar fichas de matrícula</h3>         
+              <div className="px-5 text-center bg-white">
                   <div className="row  m-2">
                       {reference === "familiar" ? 
                           <input type="text" className="rounded col-12 my-2 fst-italic" placeholder="Digite o nome ou CPF do familiar" onChange={(e)=>{setSearch(e.target.value)}}/>

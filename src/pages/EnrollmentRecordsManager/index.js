@@ -8,9 +8,10 @@ function EnrollmentRecordsManager() {
         <>
             <Header/>
             <div className="p-5 py-7">
-                <h3 className="ps-5">Gerenciar fichas de matrícula</h3>
-                <div className="container bg-white rounded ">
-                    <div className="text-center p-5">
+                
+                <div className="container ">
+                    <h3 >Gerenciar fichas de matrícula</h3>
+                    <div className="text-center p-5 bg-white rounded ">
                         <div className="py-3">
                             <Link to='../Menu' state={{ Menu: "register" }}>
                                 <button className="default-button rounded bg-verde-escola text-white border-0 py-5 h5" type="submit" > 

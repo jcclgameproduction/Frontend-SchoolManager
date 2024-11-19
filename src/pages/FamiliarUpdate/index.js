@@ -62,11 +62,21 @@ function FamiliarUpdate() {
               headers: {
                 'authorization': `${token}`,
               },
-            }).then(() => {            
-                toast.success("Os dados do familiar foram atualizados!");         
+            }).then((response) =>{
+                if(response.ok){
+                  toast.success("Os dados do familiar foram atualizados!");        
+                }  else {
+                  const errorPromise = response.json().then((data) => {
+                    throw new Error(data.error);
+                  });
+                  errorPromise.catch((error) => {
+                    toast.error(error.message);
+                    console.error(error.message); 
+                  });           
+                }
               })
               .catch((error) => {
-                toast.error("Não foi possível atualizar os dados do familiar! Tente novamente mais tarde.");
+                console.error(error); 
               });           
           } else{
             toast.error("Preencha todos os campos!");
@@ -81,12 +91,10 @@ function FamiliarUpdate() {
       <>
         <Header/>
         <div className="p-5 py-4">
-          <div className="ps-5">
+          <div className="container rounded ">
             <Link to='../recordsList' state={{ List: "familiar" }}><img src={leftArrow}/></Link>     
             <h3 >Editar ficha de matrícula</h3>
-          </div>
-          <div className="container bg-white rounded ">
-            <div className="row pt-5">
+            <div className="row pt-5 bg-white">
               <h4 className="text-center">Atualizar Familiar</h4>
               <div className="text-center border-0">
                 <div className="row">

@@ -9,7 +9,7 @@ import ConfirmationModal from "../../components/ConfirmationModal";
 function CatchStudentRegister() {
     const [student, setStudent]             = useState('');
     const [studentsList, setStudentsList]   = useState('');
-    const [familiar, setFamiliar]           = useState([]);
+    const [familiar, setFamiliar]           = useState('');
     const [familiarsList, setFamiliarsList] = useState([]);
     const [responsibles, setResponsibles]     = useState("");
     const { state } = useLocation();
@@ -82,10 +82,19 @@ function CatchStudentRegister() {
             headers: {
               'authorization': `${token}`,
             },
-          })
-            .then(() => {        
-              getCatchStudent()            
-              toast.success("Cadastro realizado com sucesso!")        
+          }).then((response) =>{
+              if(response.ok){
+                getCatchStudent()       
+                toast.success("Cadastro realizado com sucesso!")        
+              }  else {
+                const errorPromise = response.json().then((data) => {
+                  throw new Error(data.error);
+                });
+                errorPromise.catch((error) => {
+                  toast.error(error.message);
+                  console.error(error.message); 
+                });           
+              }
             })
             .catch((error) => {
               toast.error("Erro no cadastro. Tente novamente mais tarde.");
@@ -114,17 +123,25 @@ function CatchStudentRegister() {
           headers: {
             'authorization': `${token}`,
           },
-        })
-          .then(() => {        
-            getCatchStudent()            
-            toast.success("Responsável deletado com sucesso!")        
+        }).then((response) =>{
+            if(response.ok){
+              getCatchStudent()            
+              toast.success("Responsável deletado com sucesso!")  
+            }  else {
+              const errorPromise = response.json().then((data) => {
+                throw new Error(data.error);
+              });
+              errorPromise.catch((error) => {
+                toast.error(error.message);
+                console.error(error.message); 
+              });           
+            }
           })
           .catch((error) => {
-            toast.error("Erro ao deletar responsável. Tente novamente mais tarde.");
+            console.error(error); 
           });
       }          
-
-     catch(error){
+    catch(error){
       toast.error("Erro ao deletar responsável. Tente novamente mais tarde.");
     }
   }
@@ -133,9 +150,9 @@ function CatchStudentRegister() {
       <>
         <Header/>
         <div className="p-5 py-7">
-          <h3 className="ps-5">Responsável por buscar aluno</h3>
-          <div className="container bg-white rounded ">
-            <div className="row pt-5">
+          <div className="container rounded ">
+            <h3>Responsável por buscar aluno</h3>
+            <div className="row pt-5 bg-white">
               <h4 className="text-center">Quem está autorizado a retirar o aluno da instituição após o termino das aulas?</h4>
               <div className="text-center border-0">
                 <br/> <br/> <br/> <br/> 
