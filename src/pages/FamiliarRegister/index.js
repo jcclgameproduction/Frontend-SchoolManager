@@ -34,12 +34,21 @@ function FamiliarRegister() {
               headers: {
                 'authorization': `${token}`,
               },
-            }).then(() => {            
-                toast.success("Familiar cadastrado com sucesso!");         
+            }).then((response) =>{
+                if(response.ok){
+                  toast.success("Familiar cadastrado com sucesso!");       
+                }  else {
+                  const errorPromise = response.json().then((data) => {
+                    throw new Error(data.error);
+                  });
+                  errorPromise.catch((error) => {
+                    toast.error(error.message);
+                    console.error(error.message); 
+                  });           
+                }
               })
               .catch((error) => {                
                 console.log(error)
-                toast.error("Erro no cadastro do familiar. Tente novamente mais tarde.");
               });
           } else{
             toast.error("Preencha todos os campos!");
@@ -55,9 +64,10 @@ function FamiliarRegister() {
       <>
         <Header/>
         <div className="p-5 py-7">
-          <h3 className="ps-5">Matricular Aluno</h3>
-          <div className="container bg-white rounded ">
-            <div className="row pt-5">
+          
+          <div className="container rounded ">
+            <h3 >Matricular Aluno</h3>
+            <div className="row pt-5  bg-white">
               <h4 className="text-center">Cadastrar Familiar</h4>
               <div className="text-center border-0">
                 <div className="row">

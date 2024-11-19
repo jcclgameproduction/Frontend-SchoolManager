@@ -45,12 +45,21 @@ function PasswordRegister() {
                   headers: {
                     'authorization': `${token}`,
                   },
-                }).then(() => {            
-                    toast.success("Senha atualizada com sucesso!");         
+                }).then((response) =>{
+                    if(response.ok){
+                      toast.success("Senha atualizada com sucesso!");
+                    }  else {
+                      const errorPromise = response.json().then((data) => {
+                        throw new Error(data.error);
+                      });
+                      errorPromise.catch((error) => {
+                        toast.error(error.message);
+                        console.error(error.message); 
+                      });           
+                    }
                   })
                   .catch((error) => {                
-                    console.log(error)
-                    toast.error("Erro no atualizar senha. Tente novamente mais tarde.");
+                    console.log(error);
                   });
               } else{
                 toast.error("Preencha todos os campos!");
@@ -60,8 +69,8 @@ function PasswordRegister() {
               console.log(error)
               toast.error("Erro no atualizar senha. Tente novamente mais tarde.");
             }
-        
     }
+
     return (
         <div className="pt-4" id="fundo">
             <div className="d-flex border shadow justify-content-center" id="recover">

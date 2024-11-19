@@ -67,14 +67,23 @@ function UsersList() {
           headers: {
             'authorization': `${token}`,
           },
-        }).then(() => {            
-            toast.success("Funcionário deletado com sucesso!");    
-            getUsers();     
+        }).then((response) =>{
+            if(response.ok){
+              toast.success("Funcionário deletado com sucesso!");    
+              getUsers();  
+            }  else {
+              const errorPromise = response.json().then((data) => {
+                throw new Error(data.error);
+              });
+              errorPromise.catch((error) => {
+                toast.error(error.message);
+                console.error(error.message); 
+              });           
+            }
           })
           .catch((error) => {                
-            console.log(error)
-            toast.error("Erro ao deletar o funcionário. Tente novamente mais tarde.");
-          });
+            console.log(error);
+          })
         }
        catch(error){
         console.log(error)

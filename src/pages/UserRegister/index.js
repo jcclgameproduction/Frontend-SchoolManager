@@ -23,11 +23,21 @@ function UserRegister() {
         fetch(`${config.apiUrl}/sendMail`, {
           method: 'POST',
           body: formData,
-        }).then(() => {     
-          toast.success("E-mail enviado com sucesso.");                               
-          })
+        }).then(response => {
+            if(response.ok){
+              toast.success("E-mail enviado com sucesso.");       
+            }  else {
+                const errorPromise = response.json().then((data) => {
+                  throw new Error(data.error);
+                });
+                errorPromise.catch((error) => {
+                  toast.error(error.message);
+                  console.error(error.message); 
+                });           
+            }
+        })
           .catch((error) => {
-            toast.error("Não foi possível enviar o e-mail de alteração de senha. Tente novamente mais tarde.");           
+            console.error(error);
           });
 
         
@@ -56,19 +66,25 @@ function UserRegister() {
               headers: {
                 'authorization': `${token}`,
               },
-              }).then(response => {
-                if (!response.ok) {
-                    return response.text().then(text => { throw new Error(text) });
-                }
-                  return response.json();
               })
               .then(data => {         
-                  toast.success("Usuário criado com sucesso.");
                   sendMail(data.userId)
+              }).then((data, response) => {
+                  if(response.ok){
+                    sendMail(data.userId)
+                    toast.success("Usuário criado com sucesso.");
+                  }  else {
+                    const errorPromise = response.json().then((data) => {
+                      throw new Error(data.error);
+                    });
+                    errorPromise.catch((error) => {
+                      toast.error(error.message);
+                      console.error(error.message); 
+                    });           
+                  }
               })
               .catch((error) => {
                 console.log(error)
-               toast.error("Erro no cadastro do funcionário. Tente novamente mais tarde.");
               });
 
           } else{
